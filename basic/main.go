@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"github.com/golearn/basic/queue"
 )
 
 // 他们是 作用域是包内变量
@@ -13,6 +14,11 @@ var sss = "fffff"
 var (
 	aaaa = 2
 	ssss = "fdasfa"
+)
+
+const(
+	cfilename3 = "/data/shitou"
+	cage3 = 7
 )
 
 func variableZeroVale() {
@@ -30,10 +36,58 @@ func variableInitialValue() {
 
 }
 
+//常量
+func consts()  {
+	const cfilename = "/data/shitou"
+	const cage = 3    //  const cage    常量必须定义 类比 java   static
+	const (
+		cfilename2 = "fdas"
+		cage2 = 5
+	)
+	fmt.Printf("consts cfilename is %q and cage is %d \n" , cfilename, cage)
+	fmt.Printf("consts cfilename2 is %q and cage2 is %d \n" , cfilename2, cage2)
+	fmt.Printf("consts cfilename3 is %q and cage3 is %d \n" , cfilename3, cage3)
+	//cfilename2 = "fdas"      error 定义后不能改变值
+	//cage3 = 7  	error
+}
+
+//枚举类型 就是定义一组常量
+func enums()  {
+	const (
+		java = 1
+		cpp  = 2
+		python = 3
+	)
+	const (
+		kafka = iota  //const declare and start 0  自增
+		spring
+		mysql
+	)
+
+
+	fmt.Printf("enums language is %d, %d, %d \n" , java , cpp, python)
+	fmt.Printf("enums is is %d, %d, %d \n " , kafka , spring, mysql)
+}
+
 func main() {
-	variableZeroVale()
-	variableInitialValue()
-	fmt.Printf("aaa is %d \n", aaa)
-	fmt.Printf("aaaa is %d \n", aaaa)
-	fmt.Printf("ssss is %d \n", ssss)
+	//variableZeroVale()
+	//variableInitialValue()
+	//fmt.Printf("aaa is %d \n", aaa)
+	//fmt.Printf("aaaa is %d \n", aaaa)
+	//fmt.Printf("ssss is %d \n", ssss)
+	//consts()
+	//enums()
+	empty := false
+	queues := queue.Queue{}
+	queues.Push(2)
+	queues.Push(4)
+	queues.Push(6)
+	queues.Pop()
+	queues.Pop()
+	empty = queues.IsEmpty()
+	fmt.Println(" empty is " , empty)
+	fmt.Println()
+	queues.Pop()
+	empty = queues.IsEmpty()
+	fmt.Println(" empty is " , empty)
 }
