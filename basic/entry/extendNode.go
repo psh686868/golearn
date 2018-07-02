@@ -1,18 +1,23 @@
 package entry
 
-import "github.com/golearn/basic/entry/node"
+import (
+	"github.com/golearn/basic/entry/node"
+)
 
 type MyTreeyNode struct {
 	Node *node.TreeNode
 }
 
-func (myTreeNode *MyTreeyNode) postOrder()  {
-	if myTreeNode == nil || myTreeNode.Node == nil {
+func (myNode *MyTreeyNode) PostOrder()  {
+	if myNode == nil || myNode.Node == nil {
 		return
 	}
-	myTreeNode.Node.Right.Traverse()
-	myTreeNode.Node.PrintNode()
-	myTreeNode.Node.Left.Traverse()
+	treeyNode := MyTreeyNode{myNode.Node.Right}
+	//fmt.Println("treeNode is ", treeyNode)
+	treeyNode.PostOrder()
+	myNode.Node.PrintNode()
+	myTreeyNode := MyTreeyNode{myNode.Node.Left}
+	myTreeyNode.PostOrder()
 
 }
 // 对treeNode的进一步封装

@@ -1,14 +1,14 @@
 package queue
 
-type Queue []int
+type Queue []interface{}
 
-func (qu *Queue) Push (v int){
+func (qu *Queue) Push (v interface{}){
 	//fmt.Println("push qu *Quence is ", *qu)
 	//.Println("push qu Quence is ",  qu)
 	*qu = append(*qu, v)
 }
 
-func (qu *Queue)Pop() int {
+func (qu *Queue)Pop() interface{} {
 	//fmt.Println("pop (*qu)  is ", *qu)
 	//fmt.Println("pop (qu)  is ", qu)
 	head := (*qu)[0]
